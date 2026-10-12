@@ -296,11 +296,12 @@
    {
     "name": "Lunch",
     "target": "45-50g",
-    "food": "Member's Mark salsa verde chicken bowl (estimate)",
-    "protein": 25,
-    "cal": 400,
+    "food": "Member's Mark salsa verde chicken bowl (43P/44C/14F, 1450mg sodium)",
+    "protein": 43,
+    "cal": 480,
     "drink": "",
-    "done": true
+    "done": true,
+    "rev": 2
    },
    {
     "name": "Afternoon snack",
@@ -320,6 +321,32 @@
     "target": "20-25g"
    }
   ],
-  "version": 2
+  "version": 3,
+  "quickPicks": [
+   {
+    "name": "Salsa verde chicken bowl",
+    "food": "Member's Mark salsa verde chicken bowl (43P/44C/14F)",
+    "protein": 43,
+    "cal": 480
+   },
+   {
+    "name": "BBQ smoked pork bowl",
+    "food": "Member's Mark BBQ smoked pork bowl (45P/70C/17F)",
+    "protein": 45,
+    "cal": 610
+   },
+   {
+    "name": "Teriyaki chicken bowl",
+    "food": "Member's Mark teriyaki chicken bowl (46P/68C/16F)",
+    "protein": 46,
+    "cal": 600
+   },
+   {
+    "name": "Protein shake",
+    "food": "Protein shake: 12 oz 2% milk + 1 scoop ON vanilla whey + 1 tbsp PB Fit",
+    "protein": 39,
+    "cal": 330
+   }
+  ]
  }
 }

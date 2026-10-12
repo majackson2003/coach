@@ -295,11 +295,21 @@
    },
    {
     "name": "Lunch",
-    "target": "45-50g"
+    "target": "45-50g",
+    "food": "Member's Mark salsa verde chicken bowl (estimate)",
+    "protein": 25,
+    "cal": 400,
+    "drink": "",
+    "done": true
    },
    {
     "name": "Afternoon snack",
-    "target": "20-25g"
+    "target": "20-25g",
+    "food": "Protein shake: 12 oz 2% milk + 1 scoop ON vanilla Gold Standard whey + 1 tbsp PB Fit",
+    "protein": 39,
+    "cal": 330,
+    "drink": "",
+    "done": true
    },
    {
     "name": "Dinner",
@@ -309,6 +319,7 @@
     "name": "Evening snack",
     "target": "20-25g"
    }
-  ]
+  ],
+  "version": 2
  }
 }

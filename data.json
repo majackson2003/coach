@@ -1,0 +1,314 @@
+{
+ "title": "Coach Dashboard",
+ "week": "Week of Oct 12, 2026",
+ "days": [
+  {
+   "id": "mon",
+   "day": "Mon Oct 12",
+   "focus": "Chest & Triceps",
+   "done": true,
+   "exercises": [
+    {
+     "name": "Warm-up intervals",
+     "sets": 1,
+     "reps": "10 min",
+     "weight": "5-5.5 mph"
+    },
+    {
+     "name": "Barbell bench press",
+     "sets": 4,
+     "reps": "8",
+     "weight": "205"
+    },
+    {
+     "name": "Incline DB press",
+     "sets": 3,
+     "reps": "12",
+     "weight": "75s"
+    },
+    {
+     "name": "DB flies",
+     "sets": 3,
+     "reps": "12",
+     "weight": "40"
+    },
+    {
+     "name": "Overhead DB press",
+     "sets": 3,
+     "reps": "12",
+     "weight": "50"
+    },
+    {
+     "name": "Rope pull-downs",
+     "sets": 3,
+     "reps": "12",
+     "weight": "55"
+    },
+    {
+     "name": "Run/walk finisher",
+     "sets": 4,
+     "reps": "1 min",
+     "weight": "5.5 mph"
+    }
+   ]
+  },
+  {
+   "id": "tue",
+   "day": "Tue Oct 13",
+   "focus": "Legs (easy on hamstring)",
+   "exercises": [
+    {
+     "name": "Warm-up",
+     "sets": 1,
+     "reps": "10 min",
+     "weight": ""
+    },
+    {
+     "name": "Back squat",
+     "sets": 4,
+     "reps": "5",
+     "weight": "225"
+    },
+    {
+     "name": "Leg press",
+     "sets": 3,
+     "reps": "10-12",
+     "weight": ""
+    },
+    {
+     "name": "Controlled RDL (light, no max)",
+     "sets": 3,
+     "reps": "10",
+     "weight": ""
+    },
+    {
+     "name": "Leg extension",
+     "sets": 3,
+     "reps": "12",
+     "weight": ""
+    },
+    {
+     "name": "Calf raise",
+     "sets": 3,
+     "reps": "15",
+     "weight": ""
+    }
+   ]
+  },
+  {
+   "id": "wed",
+   "day": "Wed Oct 14",
+   "focus": "Shoulders",
+   "exercises": [
+    {
+     "name": "Warm-up",
+     "sets": 1,
+     "reps": "10 min",
+     "weight": ""
+    },
+    {
+     "name": "Shoulder press machine",
+     "sets": 4,
+     "reps": "8",
+     "weight": "155"
+    },
+    {
+     "name": "DB lateral raise",
+     "sets": 3,
+     "reps": "12-15",
+     "weight": ""
+    },
+    {
+     "name": "Rear delt fly",
+     "sets": 3,
+     "reps": "12-15",
+     "weight": ""
+    },
+    {
+     "name": "Shrugs",
+     "sets": 3,
+     "reps": "12",
+     "weight": ""
+    }
+   ]
+  },
+  {
+   "id": "thu",
+   "day": "Thu Oct 15",
+   "focus": "Back & Biceps",
+   "exercises": [
+    {
+     "name": "Warm-up",
+     "sets": 1,
+     "reps": "10 min",
+     "weight": ""
+    },
+    {
+     "name": "Lat pulldown",
+     "sets": 4,
+     "reps": "8",
+     "weight": "190"
+    },
+    {
+     "name": "Cable row",
+     "sets": 4,
+     "reps": "8",
+     "weight": "190"
+    },
+    {
+     "name": "DB row",
+     "sets": 3,
+     "reps": "10",
+     "weight": ""
+    },
+    {
+     "name": "Curls",
+     "sets": 3,
+     "reps": "8",
+     "weight": "105"
+    }
+   ]
+  },
+  {
+   "id": "fri",
+   "day": "Fri Oct 16",
+   "focus": "Arms + Core",
+   "exercises": [
+    {
+     "name": "Warm-up",
+     "sets": 1,
+     "reps": "10 min",
+     "weight": ""
+    },
+    {
+     "name": "Close-grip bench",
+     "sets": 3,
+     "reps": "10",
+     "weight": ""
+    },
+    {
+     "name": "Hammer curls",
+     "sets": 3,
+     "reps": "12",
+     "weight": ""
+    },
+    {
+     "name": "Rope pushdowns",
+     "sets": 3,
+     "reps": "12",
+     "weight": ""
+    },
+    {
+     "name": "Plank",
+     "sets": 3,
+     "reps": "45 sec",
+     "weight": ""
+    },
+    {
+     "name": "Cable crunch",
+     "sets": 3,
+     "reps": "15",
+     "weight": ""
+    }
+   ]
+  },
+  {
+   "id": "sat",
+   "day": "Sat Oct 17",
+   "focus": "Legs or light full body",
+   "exercises": [
+    {
+     "name": "Warm-up",
+     "sets": 1,
+     "reps": "10 min",
+     "weight": ""
+    },
+    {
+     "name": "Goblet squat",
+     "sets": 3,
+     "reps": "12",
+     "weight": ""
+    },
+    {
+     "name": "Push-ups",
+     "sets": 3,
+     "reps": "AMRAP-2",
+     "weight": ""
+    },
+    {
+     "name": "Seated row",
+     "sets": 3,
+     "reps": "12",
+     "weight": ""
+    },
+    {
+     "name": "Walk",
+     "sets": 1,
+     "reps": "20 min",
+     "weight": ""
+    }
+   ]
+  },
+  {
+   "id": "sun",
+   "day": "Sun Oct 18",
+   "focus": "Rest",
+   "exercises": []
+  }
+ ],
+ "habits": [
+  "Water / zero-sugar drinks",
+  "No fast food (or lean order)",
+  "No night sweets",
+  "Inhaler AM",
+  "Inhaler PM",
+  "Workout"
+ ],
+ "running": {
+  "note": "Twice a week after lifting. Talk test: you should be able to speak in short sentences. Keep the inhaler handy.",
+  "phases": [
+   {
+    "weeks": "Weeks 1-2",
+    "plan": "5-min walk + 6 x (1 min jog / 1 min walk)"
+   },
+   {
+    "weeks": "Weeks 3-4",
+    "plan": "6 x (2 min jog / 1 min walk)"
+   },
+   {
+    "weeks": "Week 5+",
+    "plan": "Build to 15-20 min steady jog"
+   }
+  ]
+ },
+ "meals": {
+  "date": "Mon Oct 12",
+  "target": 180,
+  "slots": [
+   {
+    "name": "Breakfast",
+    "target": "~30g",
+    "food": "2 Member's Mark egg white egg bites + 1 cup Great Value 2% cottage cheese",
+    "protein": 30,
+    "drink": "",
+    "done": true
+   },
+   {
+    "name": "Lunch",
+    "target": "45-50g"
+   },
+   {
+    "name": "Afternoon snack",
+    "target": "20-25g"
+   },
+   {
+    "name": "Dinner",
+    "target": "45-50g"
+   },
+   {
+    "name": "Evening snack",
+    "target": "20-25g"
+   }
+  ]
+ }
+}

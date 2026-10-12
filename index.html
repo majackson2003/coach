@@ -1,0 +1,61 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Coach Dashboard</title>
+<style>
+:root{--n:#14213d;--o:#fc7a1e}*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;font-family:-apple-system,system-ui,sans-serif;background:#f3f4f7;color:var(--n)}
+header{background:var(--n);color:#fff;padding:16px;position:sticky;top:0;z-index:5}
+header h1{margin:0;font-size:20px}header p{margin:4px 0 0;color:var(--o);font-weight:600}
+nav{display:flex;gap:6px;overflow-x:auto;padding:10px 12px;background:#fff;position:sticky;top:64px;z-index:4;border-bottom:1px solid #ddd}
+nav button{min-height:44px;min-width:56px;border:2px solid var(--n);background:#fff;color:var(--n);border-radius:10px;font-size:15px;font-weight:600;cursor:pointer;touch-action:manipulation}
+nav button.on{background:var(--n);color:#fff}nav button.dn{border-color:var(--o)}
+main{padding:12px;max-width:640px;margin:auto}
+.card{background:#fff;border-radius:14px;padding:14px;margin-bottom:12px;box-shadow:0 1px 4px #0002}
+.card h2{margin:0 0 4px;font-size:18px}.sub{color:#666;font-size:14px;margin-bottom:8px}
+.ex{border-top:1px solid #eee;padding:10px 0}.ex b{display:block;margin-bottom:6px}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.set{min-width:44px;min-height:44px;border-radius:10px;border:2px solid var(--n);background:#fff;font-size:16px;font-weight:700;color:var(--n);cursor:pointer;touch-action:manipulation}
+.set.ok{background:var(--o);border-color:var(--o);color:#fff}
+input{font-size:16px;min-height:44px;width:96px;padding:6px 8px;border:2px solid #ccc;border-radius:10px}
+.btn{min-height:44px;padding:0 16px;border:0;border-radius:10px;background:var(--o);color:#fff;font-size:16px;font-weight:700;cursor:pointer}
+.badge{display:inline-block;background:var(--o);color:#fff;border-radius:8px;padding:2px 8px;font-size:13px;margin-left:6px}
+table{width:100%;border-collapse:collapse}td,th{text-align:center;padding:2px;font-size:13px}td:first-child{text-align:left;font-size:14px}
+.hb{width:44px;height:44px;border-radius:10px;border:2px solid #ccc;background:#fff;cursor:pointer;font-size:18px}.hb.ok{background:var(--n);border-color:var(--n);color:#fff}
+.bar{height:10px;background:#eee;border-radius:6px;overflow:hidden;margin-top:6px}.bar i{display:block;height:100%;background:var(--o)}
+.warn{font-size:12px;color:#a00}
+</style></head><body>
+<header><h1 id="t">Coach Dashboard</h1><p id="w">Loading…</p></header>
+<nav id="nav"></nav><main id="app"><div class="card">Loading plan…</div></main>
+<script>
+(function(){
+var KEY='coach-v1',mem={},persist=true;
+function load(){try{return JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){persist=false;return mem}}
+var S=load();
+function save(){try{if(persist)localStorage.setItem(KEY,JSON.stringify(S))}catch(e){persist=false}}
+var D,cur;
+function el(t,a,c){var e=document.createElement(t);if(a)for(var k in a){if(k==='on')e.addEventListener('click',a[k]);else if(k==='text')e.textContent=a[k];else e.setAttribute(k,a[k])}(c||[]).forEach(function(x){e.appendChild(typeof x==='string'?document.createTextNode(x):x)});return e}
+function seed(){if(S.seeded)return;S.sets={};S.w={};D.days.forEach(function(d){if(d.done)d.exercises.forEach(function(x,i){S.w[d.id+i]=x.weight;for(var s=0;s<x.sets;s++)S.sets[d.id+i+'_'+s]=1})});S.h={};S.seeded=1;S.m=D.meals.slots.map(function(s){return{f:s.food||'',p:s.protein!=null?String(s.protein):'',d:s.drink||'',ok:s.done?1:0}});save()}
+function prog(d){var t=0,c=0;d.exercises.forEach(function(x,i){for(var s=0;s<x.sets;s++){t++;if(S.sets[d.id+i+'_'+s])c++}});return[c,t]}
+function nav(){var n=document.getElementById('nav');n.innerHTML='';D.days.forEach(function(d){var p=prog(d);n.appendChild(el('button',{'class':(d.id===cur?'on ':'')+(p[1]&&p[0]===p[1]?'dn':''),on:function(){cur=d.id;render()},text:d.day.slice(0,3)}))});
+[['meal','Meals'],['hab','Habits'],['run','Run']].forEach(function(b){n.appendChild(el('button',{'class':cur===b[0]?'on':'',on:function(){cur=b[0];render()},text:b[1]}))})}
+function day(d){var p=prog(d),c=el('div',{'class':'card'});
+var h=el('h2',{},[d.day+' — '+d.focus]);if(p[1]&&p[0]===p[1])h.appendChild(el('span',{'class':'badge',text:'Done ✓'}));c.appendChild(h);
+if(!d.exercises.length){c.appendChild(el('p',{text:'Rest day. Walk, stretch, hydrate, sleep.'}));return c}
+c.appendChild(el('div',{'class':'sub',text:p[0]+' / '+p[1]+' sets complete'}));var bar=el('div',{'class':'bar'},[el('i',{style:'width:'+(p[1]?p[0]/p[1]*100:0)+'%'})]);c.appendChild(bar);
+d.exercises.forEach(function(x,i){var r=el('div',{'class':'row'});
+for(var s=0;s<x.sets;s++)(function(k,s){r.appendChild(el('button',{'class':'set'+(S.sets[k]?' ok':''),'aria-label':'Set '+(s+1),on:function(){S.sets[k]=S.sets[k]?0:1;save();render()},text:String(s+1)}))})(d.id+i+'_'+s,s);
+var inp=el('input',{type:'text',inputmode:'decimal',placeholder:'weight',value:S.w[d.id+i]!=null?S.w[d.id+i]:x.weight});inp.addEventListener('input',function(){S.w[d.id+i]=inp.value;save()});r.appendChild(inp);
+c.appendChild(el('div',{'class':'ex'},[el('b',{text:x.name+' — '+x.sets+' × '+x.reps}),r]))});
+c.appendChild(el('div',{'class':'row',style:'margin-top:10px'},[el('button',{'class':'btn',on:function(){d.exercises.forEach(function(x,i){for(var s=0;s<x.sets;s++)S.sets[d.id+i+'_'+s]=1});save();render()},text:'Mark all done'})]));return c}
+function habits(){var c=el('div',{'class':'card'},[el('h2',{text:'Habit tracker'}),el('div',{'class':'sub',text:D.week})]);var tb=el('table'),hr=el('tr',{},[el('th')]);D.days.forEach(function(d){hr.appendChild(el('th',{text:d.day.slice(0,2)}))});tb.appendChild(hr);
+D.habits.forEach(function(h,hi){var tr=el('tr',{},[el('td',{text:h})]);D.days.forEach(function(d){var k=hi+'_'+d.id;tr.appendChild(el('td',{},[el('button',{'class':'hb'+(S.h[k]?' ok':''),'aria-label':h+' '+d.day,on:function(){S.h[k]=S.h[k]?0:1;save();render()},text:S.h[k]?'✓':''})]))});tb.appendChild(tr)});
+c.appendChild(el('div',{style:'overflow-x:auto'},[tb]));return c}
+function run(){var r=D.running,c=el('div',{'class':'card'},[el('h2',{text:'Running plan'}),el('div',{'class':'sub',text:r.note})]);r.phases.forEach(function(p,i){var k='run'+i;c.appendChild(el('div',{'class':'ex'},[el('b',{text:p.weeks}),el('div',{text:p.plan}),el('div',{'class':'row',style:'margin-top:6px'},[el('button',{'class':'set'+(S.sets[k]?' ok':''),style:'padding:0 12px',on:function(){S.sets[k]=S.sets[k]?0:1;save();render()},text:S.sets[k]?'Phase done ✓':'Mark phase done'})])]))});return c}
+function meals(){var m=D.meals,c=el('div',{'class':'card'},[el('h2',{text:'Meals — '+m.date})]);var tot=0;m.slots.forEach(function(s,i){tot+=parseFloat(S.m[i].p)||0});
+c.appendChild(el('div',{'class':'sub',text:'Protein: '+tot+' g / '+m.target+' g'}));c.appendChild(el('div',{'class':'bar'},[el('i',{style:'width:'+Math.min(100,tot/m.target*100)+'%'})]));
+m.slots.forEach(function(s,i){var v=S.m[i];function inp(f,ph,w,mode){var x=el('input',{type:'text',placeholder:ph,value:v[f]||'',style:'width:'+w});if(mode)x.setAttribute('inputmode',mode);x.addEventListener('change',function(){v[f]=x.value;save();if(f==='p')render()});return x}
+c.appendChild(el('div',{'class':'ex'},[el('b',{text:s.name+' (target '+s.target+')'}),el('div',{'class':'row'},[inp('f','food','100%'),inp('p','protein g','110px','decimal'),inp('d','drink','140px'),el('button',{'class':'set'+(v.ok?' ok':''),style:'padding:0 12px',on:function(){v.ok=v.ok?0:1;save();render()},text:v.ok?'Done ✓':'Done?'})])]))});return c}
+function render(){nav();var a=document.getElementById('app');a.innerHTML='';var d=D.days.filter(function(x){return x.id===cur})[0];a.appendChild(cur==='meal'?meals():cur==='hab'?habits():cur==='run'?run():day(d));if(!persist)a.appendChild(el('p',{'class':'warn',text:'Storage blocked here — changes last until you close the page.'}))}
+fetch('data.json?v=1').then(function(r){return r.json()}).then(function(j){D=j;document.getElementById('t').textContent=j.title;document.getElementById('w').textContent=j.week;seed();var dn=['sun','mon','tue','wed','thu','fri','sat'][new Date().getDay()];cur=dn;render()}).catch(function(e){document.getElementById('app').innerHTML='<div class="card">Could not load plan: '+e+'</div>'});
+})();
+</script></body></html>
